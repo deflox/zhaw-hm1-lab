@@ -24,7 +24,7 @@ def IT19tb_WIN7_S1_Aufg2(a, xmin, xmax):
         
     # calculate integral coefficients and y values
     pint_cf = np.arange((len(a) + 1)*float(1))
-    pint_cf[len(pint_cf)-1] = 0.0;
+    pint_cf[len(pint_cf)-1] = 0.0
     for i in range (0, len(a)):
         pint_cf[i] = (a[i]/(len(a)-i))
     pint = np.arange(len(x))
