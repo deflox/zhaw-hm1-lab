@@ -10,6 +10,8 @@ def fact_rec(n):
         return n*fact_rec(n-1)
     
 def fact_for(n):
+    if n <= 1:
+        return 1
     result = 1
     for i in range (2, n+1):
         result = result * i
@@ -23,3 +25,9 @@ def fact_for(n):
 # Die Funktion mit dem for-Loop ist schneller im Rechnen.
 
 print(fact_rec(190))
+print(fact_rec(200))
+print(fact_rec(170.0))
+print(fact_rec(171.0))
+
+# Scheinbar lassen sich beim Datentyp Integer sehr grosse Zahlen speichern, 
+# beim Datentyp float ist die Grenze scheinbar bereits bei 171! erreicht.
