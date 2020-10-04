@@ -18,10 +18,7 @@ for i in range (0, 22):
     y_s1_values[i] = value * s1(value)
     value = 2 * value
     
-plt.plot(x_s1_values, y_s1_values, color='blue')
-
-print(x_s1_values)
-print(y_s1_values)
+plt.plot(x_s1_values, y_s1_values, color='red')
 
 # Aufgabe 3b
 def s2(x):
@@ -38,6 +35,6 @@ for i in range (0, 22):
     y_s2_values[i] = value * s2(value)
     value = 2 * value
 
-plt.plot(x_s2_values, y_s2_values, color='red')
+plt.plot(x_s2_values, y_s2_values, color='blue')
 
 plt.show()
