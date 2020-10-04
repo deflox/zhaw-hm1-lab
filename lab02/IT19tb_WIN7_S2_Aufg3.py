@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 # Seitenlänge der Dreiecke zu klein und zu ungenau, die resultierende
 # Summe wird ebenfalls ungenau.
 
-
+# Beispiel für s1(x): y = s1(12)
 def s1(x):
     if x <= 6:
         return 1
@@ -36,6 +36,7 @@ plt.plot(x_s1_values, y_s1_values, color='red', label='Variante 3a)')
 # es zu einer kleinen Fehlerbereinigung kommt, und die Werte etwas länger
 # genau bleiben, und weniger stark abweichen als die Variante 3a).
 
+# Beispiel für s2(x): y = s2(12)
 def s2(x):
     if x <= 6:
         return 1

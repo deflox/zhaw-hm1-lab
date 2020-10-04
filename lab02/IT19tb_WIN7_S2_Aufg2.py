@@ -12,9 +12,11 @@ import matplotlib.pyplot as plt
 # (x-2) mehrmals mit sich selber multipliziert. In diesem Fall ist die Rechnung
 # weniger Fehleranfällig, da die Multiplikation wie mehrfaches Addieren ist. 
 
+# Beispiel für f1(x): y = f1(5)
 def f1(x):
     return x**7 - 14*x**6 + 84*x**5 - 280*x**4 + 560*x**3 - 672*x**2 + 448*x - 128
 
+# Beispiel für f2(x): y = f2(5)
 def f2(x):
     return (x-2)**7
 
@@ -37,6 +39,7 @@ plt.show()
 # Deshalb ist die Berechnung des limes von g(x) für x->0 auf diese Weise
 # nicht stabil.
 
+# Beispiel für g1(x): y = g1(5)
 def g1(x):
     return x/(np.sin(1.0+x)-np.sin(1.0))
 
@@ -57,6 +60,7 @@ plt.show()
 # Approximation vom limes von g(x) für x->0 verwenden.
 # Der Wert vom limes von g(x) für x->0 ist ungefähr 1.85
 
+# Beispiel für g2(x): y = g2(5)
 def g2(x):
     return x / (2.0 * np.cos( (2.0+x) / 2.0 ) * np.sin( x / 2.0 ))
 
