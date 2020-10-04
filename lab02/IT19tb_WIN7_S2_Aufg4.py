@@ -1,5 +1,3 @@
-import sys
-
 # Aufgabe 4 Teil 1
 # Wir berechnen den kleinstmöglichen Wert von eps je nach der Basis 2 und 10.
 # Wir dividieren den Wert immer jeweils um die entsprechende Basis und prüfen
