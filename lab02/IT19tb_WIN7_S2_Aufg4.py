@@ -66,4 +66,4 @@ print('q_max=',qmax)
 print('q_max+1=',qmax+1)
 print('q_max+2=',qmax+2)
 
-print('2*(1/eps)-1=',(2/eps_bin)-1)
+print('(2*(1/eps))-1=',(2/eps_bin)-1)
