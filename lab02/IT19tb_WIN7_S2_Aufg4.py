@@ -1,3 +1,5 @@
+import sys
+
 # Aufgabe 4 Teil 1
 # Wir berechnen den kleinstmöglichen Wert von eps je nach der Basis 2 und 10.
 # Wir dividieren den Wert immer jeweils um die entsprechende Basis und prüfen
@@ -48,10 +50,20 @@ if (eps_bin == eps_dez):
 
 
 # Aufgabe 4 Teil 2
+# Die grösstmögliche Zahl q_max ist 9007199254740991.0
+# q_max lässt sich aus der eps folgendermassen berechnen:
+# q_max = (2 * (1/eps))-1
 
 print('Aufgabe 4 Teil 2:')
-maxx = 1.0
-while ((1.0+maxx)!=maxx):
-    maxx=maxx*2
+
+qmax = 1.0
+while ((1.0+qmax)!=qmax):
+    qmax=qmax*2
     
-print(maxx)
+qmax -=1
+    
+print('q_max=',qmax)
+print('q_max+1=',qmax+1)
+print('q_max+2=',qmax+2)
+
+print('2*(1/eps)-1=',(2/eps_bin)-1)
