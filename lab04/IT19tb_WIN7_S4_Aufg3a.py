@@ -7,10 +7,10 @@ def fixpunktiteration(phi):
     prev = f(phi)
     print("Iterationsschritt:", prev)
     for i in range (1, 10000):
-        neu = f(phi)
+        neu = f(prev)
         print("Iterationsschritt:", neu)
         if np.abs(neu - prev) < 1e-6:
-            return neu;
+            return neu
         prev = neu
     return "Nicht anziehend"
 
