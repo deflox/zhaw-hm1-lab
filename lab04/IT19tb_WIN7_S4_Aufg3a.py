@@ -3,13 +3,15 @@ import numpy as np
 def f(phi):
     return 0.5*np.pi+np.sin(phi)
 
+
+
 def fixpunktiteration(phi):
     prev = f(phi)
-    print("Iterationsschritt:", prev)
+    print("x_1", prev)
     for i in range (1, 10000):
         neu = f(prev)
-        print("Iterationsschritt:", neu)
-        if np.abs(neu - prev) < 1e-6:
+        print("x_", i+1, neu)
+        if np.abs(neu - prev) < 1e-3:
             return neu
         prev = neu
     return "Nicht anziehend"
