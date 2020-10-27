@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2cm,nohead]{geometry}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+\usepackage{setspace}
+\onehalfspacing
+
+\begin{document}
+
+\section*{IT19tb WIN7 S4 Aufgabe 3}
+Leo Rudin \& Stefan Teodoropol
+
+\subsection*{a)}
+
+Fläche des Kreissegments: \( \frac{1}{2}r^2(\varphi - \sin\varphi) \)\\
+Fläche der ungefüllten Fläche: \( \frac{1}{4}r^2\pi \)\\
+
+Gleichung:\\
+\( \frac{1}{2}r^2(\varphi - \sin\varphi) = \frac{1}{4}r^2\pi \)\\
+\( \frac{1}{2}(\varphi - \sin\varphi) = \frac{1}{4}\pi \)\\
+\( \varphi - \sin\varphi = \frac{1}{2}\pi \)\\
+\(  \sin\varphi - \varphi = -0.5\pi \)\\
+
+\subsection*{b)}
+
+Gleichung umgeformt in Fixpunktiterationsgleichung:\\
+\( \varphi_{n+1} = 0.5\pi + \sin(\varphi_n) \)\\\\
+Laut der Skizze auf dem Aufgabenblatt sehen wir, dass der Winkel grösser sein muss als \( \frac{\pi}{2} \) und kleiner als \( \pi \) - wir wählen den Mittelwert \( \frac{3\pi}{4} \).\\\\
+Wir machen die Fixpunktiteration mit \( x_0 \) = \( \frac{3\pi}{4} \):\\
+\( x_1 = 0.5\pi + \sin(x_0) = 2.277903107981444 \)\\
+\( x_2 = 0.5\pi + \sin(x_1) = 2.3310409238705265 \)\\
+...\\
+\( x_{13} = 0.5\pi + \sin(x_{12}) = 2.3096054609789665 \)\\\\
+Es konvergiert also gegen: 2.3096054609789665\\
+In Bogenmass:\\
+\( \frac{2.28 * 360}{2\pi} \approx 132 \) Grad
+
+\subsection*{c)}
+
+Wir rechnen die Höhe der Ankatethe des inneren Dreiecks mit Winkel \( \frac{\varphi}{2} \) aus. Dann addieren wir den Radius zur Höhe hinzu, um die Gesamthöhe zu kriegen.\\\\
+Füllhöhe: \( h(\varphi) = r + (\cos(\frac{\varphi}{2})*r) \)
+
+\end{document}
