@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[utf8]{inputenc}
+% to set spacing of page margins
+\usepackage[margin=2cm,nohead]{geometry}
+% to include images
+\usepackage{graphicx}
+% to automatically create paragraphs when doing so in the code
+\usepackage{parskip}
+
+\usepackage{amsmath}
+
+% to not indent new paragraphs
+\setlength{\parindent}{0pt}
+
+% line spacing
+\usepackage{setspace}
+\doublespacing
+%\onehalfspacing
+
+\begin{document}
+
+\section*{IT19tb WIN7 S6 Aufgabe 1}
+Leo Rudin \& Stefan Teodoropol
+
+\(x_1\): Flugzeugtyp A, \(x_2\): Flugzeugtyp B, \(x_3\): Flugzeugtyp C
+
+\subsection*{a)}
+
+Gleichung:\\
+\(200x_1 + 150x_2 + 100x_3 = 2150\)\\
+\(50x_1 + 30x_2 + 20x_3 = 470\)\\
+\(20x_1 + 10x_2 + 0x_3 = 150\)
+
+Lösen in Matrixform :
+\[
+\begin{bmatrix} 
+200 & 150 & 100 & 2150 \\
+50 & 30 & 20 & 470 \\
+20 & 10 & 0 & 150 \\
+\end{bmatrix}
+\xrightarrow[\text{III - 0.1}\times\text{I}]{\text{II - 0.25}\times\text{I}}
+\begin{bmatrix} 
+200 & 150 & 100 & 2150 \\
+0 & -7.5 & -5 & -67.5 \\
+0 & -5 & -10 & -65 \\
+\end{bmatrix}
+\xrightarrow{\text{III - 0.666}\times\text{II}}
+\begin{bmatrix} 
+200 & 150 & 100 & 2150 \\
+0 & -7.5 & -5 & -67.5 \\
+0 & 0 & -\frac{20}{3} & -20 \\
+\end{bmatrix}
+\]
+
+\(x_3 = \frac{-20}{-\frac{20}{3}} = 3\)\\
+\(x_2 = \frac{-67.5 + 5*(3)}{-7.5} = 7\)\\
+\(x_1 = \frac{2150 - 100*(3) - 150*(7)}{200} = 4\)
+
+Es braucht 3 Flugzeuge vom Flugzeugtyp C, 7 Flugzeuge vom Flugzeugtyp B und 4 Flugzeuge vom Flugzeugtyp A um das genannte Ziel zu erreichen.
+
+\newpage
+\subsection*{b)}
+
+Gleichung:\\
+\(200x_1 + 150x_2 + 100x_3 = 1600\)\\
+\(50x_1 + 30x_2 + 20x_3 = 350\)\\
+\(20x_1 + 10x_2 + 0x_3 = 120\)
+
+\[
+\begin{bmatrix} 
+200 & 150 & 100 & 1600 \\
+50 & 30 & 20 & 350 \\
+20 & 10 & 0 & 120 \\
+\end{bmatrix}
+\xrightarrow[\text{III - 0.1}\times\text{I}]{\text{II - 0.25}\times\text{I}}
+\begin{bmatrix} 
+200 & 150 & 100 & 1600 \\
+0 & -7.5 & -5 & -50 \\
+0 & -5 & -10 & -40 \\
+\end{bmatrix}
+\xrightarrow{\text{III - 0.666}\times\text{II}}
+\begin{bmatrix} 
+200 & 150 & 100 & 2150 \\
+0 & -7.5 & -5 & -50 \\
+0 & 0 & -\frac{20}{3} & -\frac{20}{3} \\
+\end{bmatrix}
+\]
+
+\(x_3 = \frac{-\frac{20}{3}}{-\frac{20}{3}} = 1\)\\
+\(x_2 = \frac{-50 + 5*(1)}{-7.5} = 6\)\\
+\(x_1 = \frac{1600 - 150*(6) - 100*(1)}{200} = 3\)
+
+Es braucht 1 Flugzeuge vom Flugzeugtyp C, 6 Flugzeuge vom Flugzeugtyp B und 3 Flugzeuge vom Flugzeugtyp A um das genannte Ziel zu erreichen.
+
+\end{document}
