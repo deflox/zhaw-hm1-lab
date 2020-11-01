@@ -21,7 +21,7 @@ def IT19tb_WIN7_S6_Aufg(A_in,b_in):
     for i in range(1, len(A)):
         if (A[i-1][column] == 0):
             lineChangements += 1
-            A = rearangeForNull(A, i-1, column)
+            (A,b) = rearangeForNull(A,b, i-1, column)
         
         for y in range(i, len(A)):
             coefficient = A[y][column]/A[i-1][column]
@@ -50,22 +50,26 @@ def IT19tb_WIN7_S6_Aufg(A_in,b_in):
     
     return A, det, x_values
 
-def rearangeForNull(A,row,column):
+def rearangeForNull(A,b,row,column):
     goodRow = 0
     for i in range(row+1, len(A)):
         if (A[i][column] != 0):
             goodRow = i
-            return switchRows(A, row, goodRow)
+            return switchRows(A,b, row, goodRow)
     
-def switchRows(A, oldRow, newRow):
-    B = np.zeros((len(A), len(A[0])))
+def switchRows(A,b, oldRow, newRow):
+    A_new = np.zeros((len(A), len(A[0])))
+    b_new = np.zeros(len(b))
     
     for i in range(0, len(A)):
         if (i == oldRow):
-            B[i] = A[newRow]
+            A_new[i] = A[newRow]
+            b_new[i] = b[newRow]
         elif (i == newRow):
-            B[i] = A[oldRow]
+            A_new[i] = A[oldRow]
+            b_new[i] = b[oldRow]
         else:
-            B[i] = A[i]
+            A_new[i] = A[i]
+            b_new[i] = b[i]
             
-    return B
+    return (A_new, b_new)
