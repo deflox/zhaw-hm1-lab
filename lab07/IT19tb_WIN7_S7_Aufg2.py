@@ -1,5 +1,6 @@
 import numpy as np
 import scipy as sp
+from scipy import linalg
 
 # Aufgabe 2a
 A = np.array([
@@ -36,10 +37,10 @@ A_complete = np.array([
     [1.2,2.,5.8,4.]
 ])
 
-p,l,u = sp.linalg.lu(A_complete)
+p,l,u = linalg.lu(A_complete)
 
 print("P=", p)
 print("L=", l)
-print("U=", u)
+print("R=", u)
 
 print("Solution: ", np.linalg.solve(A,b))
