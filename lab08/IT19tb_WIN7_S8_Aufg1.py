@@ -6,40 +6,62 @@ A = np.array([
     [2,-1,3]
 ])
 
-b = np.transpose(np.array([1,9,5]))
+print(A[:,0][1:])
 
-def getv1(a, a11):
-    return np.transpose(a) + (signum(a11) * np.linalg.norm(a) * np.transpose(np.array([1,0,0])))
+# Aufgabe 1a
 
-def getu1(v1):
-    return v1/np.linalg.norm(v1)
+# 1. Iteration
 
-def signum (n) :
-    if n >= 0: return 1
-    else: return -1
+r1 = np.array([
+    [1.],
+    [-5.],
+    [2.]
+]);
+i1 = np.array([
+    [1.],
+    [0],
+    [0]
+]);
 
-'''
-u1 = np.array([
-    [(1 + np.sqrt(30)) / np.sqrt(2*np.sqrt(30) + 60)],
-    [-5 / np.sqrt(2*np.sqrt(30) + 60)],
-    [2 / np.sqrt(2*np.sqrt(30) + 60)]
+v1 = r1 + (np.linalg.norm(r1) * i1)
+u1 = v1/np.linalg.norm(v1)
+H1 = np.eye(3,3) - (2*np.matmul(u1,np.transpose(u1)))
+R_neu = np.matmul(H1,A)
+
+# 2. Iteration
+
+r2 = np.array([
+    [R_neu[1][1]],
+    [R_neu[2][1]]
+]);
+i2 = np.array([
+    [1],
+    [0]
 ])
-'''
 
-u1 = (getu1(getv1(np.transpose(np.array([1,-5,2])), 1)))
+v2 = r2 + ((-1 * np.linalg.norm(r2)) * i2);
+u2 = v2/np.linalg.norm(v2)
+H2 = np.eye(2,2) - (2*np.matmul(u2,np.transpose(u2)))
 
-u1T = np.transpose(u1)
+H2_adjusted = np.array([
+    [1,0,0],
+    [0,H2[0][0],H2[0][1]],
+    [0,H2[1][0],H2[1][1]]
+])
 
-#print (np.matmul(u1, u1T))
+R_neu_2 = np.matmul(H2_adjusted,R_neu)
+Q_neu_2 = np.matmul(np.transpose(H1),np.transpose(H2_adjusted));
 
-#print (2*np.matmul(u1, u1T))
 
-Q1 = np.eye(3,3) - 2*np.matmul(u1, u1T)
+# Aufgabe 1b
 
-#print (Q1)
+Q = Q_neu_2
+R = R_neu_2
 
-print (A)
+b = np.array([1.,9.,5.])
 
-print (Q1)
+c = np.matmul(np.transpose(Q),b)
 
-print (np.matmul(A, Q1))
+x3 = c[2]/R[2][2]
+x2 = (c[1]-R[1][2]*x3)/R[1][1]
+x1 = (c[0]-R[0][2]*x3-R[0][1]*x2)/R[0][0]

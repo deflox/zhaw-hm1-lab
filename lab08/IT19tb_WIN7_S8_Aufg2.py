@@ -10,12 +10,12 @@ Output Parameters: Q : n*n orthogonal matrix
                    R : n*n upper right triangular matrix            
 Remarks: none
 Example: A = np.array([[1,2,-1],[4,-2,6],[3,1,0]]) 
-        [Q,R]=Serie8_Aufg2(A)
+        [Q,R]=IT19tb_WIN7_S8_Aufg2(A)
 
 @author: knaa
 """
 
-def Serie8_Aufg2(A):
+def IT19tb_WIN7_S8_Aufg2(A):
     
     import numpy as np
     
@@ -31,20 +31,17 @@ def Serie8_Aufg2(A):
     R = A
     
     for j in np.arange(0,n-1):
-        a = np.copy(???).reshape(n-j,1)     
-        e = np.eye(???)[:,0].reshape(n-j,1)
-        length_a = np.linalg.norm(a)
-        if a[0] >= 0: sig = ???
-        else: sig = ??? 
-        v = ???
-        u = ???
-        H = ???
+        a = np.copy(R[:,j][j:]).reshape(n-j,1) # spaltenvektor des neuen R's
+        e = np.eye(n-j)[:,0].reshape(n-j,1) # spalte der einheitsmatrix
+        length_a = np.linalg.norm(a) # länge des spalten vektors
+        if a[0] >= 0: sig = 1
+        else: sig = -1
+        v = a + (sig * length_a * e)
+        u = v/np.linalg.norm(v)
+        H = np.eye(n-j) - (2 * np.matmul(u,np.transpose(u)))
         Qi = np.eye(n)
-        Qi[j:,j:] = ???
-        R = ???
-        Q = ???
+        Qi[j:,j:] = H
+        R = np.matmul(Qi,R)
+        Q = np.matmul(Q,np.transpose(Qi))
         
     return(Q,R)
-
-
-
