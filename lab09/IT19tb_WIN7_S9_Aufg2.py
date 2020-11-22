@@ -1,15 +1,10 @@
 import numpy as np
 
-def IT19tb_WIN7_S9_Aufg2(A,A_,b,b_):
-    A = A.astype('float64')
-    A_ = A_.astype('float64')
-    b = b.astype('float64')
-    b_ = b_.astype('float64')
-    
+def IT19tb_WIN7_S9_Aufg2(A,A_,b,b_):    
     x = np.linalg.solve(A, b)
     x_ = np.linalg.solve(A_, b_)
     
-    dx_max = "NaN"
+    dx_max = np.nan
     dx_obs = np.linalg.norm((x-x_),np.inf)/np.linalg.norm(x,np.inf)
     
     condA = np.linalg.cond(A,np.inf)
