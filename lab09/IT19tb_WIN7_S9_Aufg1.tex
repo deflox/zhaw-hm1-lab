@@ -1,0 +1,265 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[utf8]{inputenc}
+% to set spacing of page margins
+\usepackage[margin=2cm,nohead]{geometry}
+% to include images
+\usepackage{graphicx}
+% to automatically create paragraphs when doing so in the code
+\usepackage{parskip}
+
+\usepackage{amsmath}
+
+% to not indent new paragraphs
+\setlength{\parindent}{0pt}
+
+% line spacing
+\usepackage{setspace}
+%\doublespacing
+\onehalfspacing
+
+\begin{document}
+
+\section*{IT19tb WIN7 S9 Aufgabe 1}
+Leo Rudin \& Stefan Teodoropol
+
+Ax = b mit
+
+\[
+A =
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+10^{-4} & 0 & 10^{-4} \\
+\end{bmatrix}
+b =
+\begin{bmatrix} 
+1 \\
+1 \\
+0 \\
+\end{bmatrix}
+\]
+
+Vektornorm: \(||x||_\infty = \text{max}(|x_1|,...,|x_n|)\)\\
+Matrixnorm: \(||x||_\infty = \text{max}(|x_{11}|+...+|x_{1n}|,...,|x_{n1}|+...+|x_{nn}|)\)
+
+\subsection*{a)}
+
+\(\text{cond}(A) = ||A||_\infty * ||A^{-1}||_\infty \)
+
+\(\text{cond}(A) = ||
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+10^{-4} & 0 & 10^{-4} \\
+\end{bmatrix}
+||_\infty * ||
+\begin{bmatrix} 
+-1 & 0 & 20'000 \\
+0 & 1 & 0 \\
+1 & 0 & -10'000 \\
+\end{bmatrix}
+||_\infty = 3 * 20'001 = 60'003\)
+
+\subsection*{b)}
+
+\(||b - \overset{\sim}{b}||_\infty = ||
+\begin{bmatrix} 
+1 \\
+1 \\
+0 \\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1 \\
+1 \\
+\varepsilon \\
+\end{bmatrix}
+||_\infty
+=
+||
+\begin{bmatrix} 
+0 \\
+0 \\
+-\varepsilon \\
+\end{bmatrix}
+||_\infty
+=
+\varepsilon
+\)
+
+\(||b||_\infty = ||
+\begin{bmatrix} 
+1 \\
+1 \\
+0 \\
+\end{bmatrix}
+||_\infty = 1\)
+
+Folgende Gleichung muss erfüllt werden:
+
+\(\frac{||x - \overset{\sim}{x}||_\infty}{||x||_\infty} \leq ||A^{-1}||_\infty * ||A||_\infty * \frac{||b - \overset{\sim}{b}||_\infty}{||b||_\infty}\)
+
+Mit eingesetzten Werten:
+
+\(0.01 \leq \frac{60'003\varepsilon}{1}\)\\
+\(0.01 \leq 60'003\varepsilon\)\\
+\(\frac{0.01}{60'003} \leq \varepsilon\)
+
+Die Abweichung bei der z-Komponente in \(\overset{\sim}{b}\) darf höchstens \(\frac{0.01}{60'003}\) bzw. \(1.67*10^{-7}\) sein, damit die Ungleichung noch stimmt.
+
+\newpage
+\subsection*{c)}
+
+LR-Zerlegung für A:
+
+R:
+
+\[
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+10^{-4} & 0 & 10^{-4} \\
+\end{bmatrix}
+\xrightarrow[\text{III - }10^{-4}\times\text{I}]{\text{II - }0\times\text{I}}
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+0 & 0 & -10^{-3} \\
+\end{bmatrix}
+\xrightarrow{\text{III - 0}\times\text{II}}
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+0 & 0 & -10^{-4} \\
+\end{bmatrix}
+\]
+
+L:
+
+\[
+\begin{bmatrix} 
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+10^{-4} & 0 & 1 \\
+\end{bmatrix}
+\]
+
+\textbf{Lösen für \(b\):}
+
+Ly = b:
+
+\(y_1 = 1\)\\
+\(y_2 = 1\)\\
+\(10^{-4}y_1 + y_3 = 0 \rightarrow y_3 = -10^{-4}*(1) = -10^{-4}\)
+
+Rx = y:
+
+\(x_1 + 2x_3 = 1 \rightarrow x_1 = 1 - 2*(1) = -1\)\\
+\(x_2 = 1\)\\
+\(-10^{-4}x_3 = -10^{-4} \rightarrow x_3 = 1\)
+
+\textbf{Lösen für \(\overset{\sim}{b}\):}
+
+Ly = b
+
+\(y_1 = 1\)\\
+\(y_2 = 1\)\\
+\(10^-4y_1 + y_3 = \frac{0.01}{60'003} \rightarrow y_3 = \frac{0.01}{60'003} - 10^{-4}*(1) \)
+
+Rx = y:
+
+\(x_1 + 2x_3 = 1 \rightarrow x_1 = 1 - 2*(\frac{\frac{0.01}{60'003} - 10^{-4}}{-10^{-4}}) \approx -0.997\)\\
+\(x_2 = 1\)\\
+\(-10^{-4}x_3 = \frac{0.01}{60'003} - 10^{-4} \rightarrow x_3 = \frac{\frac{0.01}{60'003} - 10^{-4}}{-10^{-4}} \approx 0.998\)
+
+\newpage
+Abweichung:
+
+\(||\overset{\sim}{x} - x||_\infty = ||
+\begin{bmatrix} 
+-0.997\\
+1\\
+0.998\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+-1\\
+1\\
+1\\
+\end{bmatrix}
+||_\infty
+=
+||
+\begin{bmatrix} 
+0.003\\
+0\\
+-0.002\\
+\end{bmatrix}
+||_\infty
+=
+0.003\)
+
+\(||x||_\infty =
+||
+\begin{bmatrix} 
+-1\\
+1\\
+1\\
+\end{bmatrix}
+||_\infty
+= 1
+\)
+
+\(\frac{||\overset{\sim}{x} - x||_\infty}{||x||_\infty} = \frac{0.003}{1} = 0.003\)
+
+Der tatsächliche relative Fehler beträgt 0.3\%.
+
+\subsection*{d)}
+
+\(\overset{\sim}{A} = 
+\begin{bmatrix} 
+1 + 10^{-7} & 10^{-7} & 2 + 10^{-7} \\
+10^{-7} & 1 + 10^{-7} & 10^{-7} \\
+10^{-4} + 10^{-7} & 10^{-7} & 10^{-4} + 10^{-7} \\
+\end{bmatrix}
+\)
+
+\(||A - \overset{\sim}{A}||_\infty = || 
+\begin{bmatrix} 
+1 & 0 & 2 \\
+0 & 1 & 0 \\
+10^{-4} & 0 & 10^{-4} \\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1 + 10^{-7} & 10^{-7} & 2 + 10^{-7} \\
+10^{-7} & 1 + 10^{-7} & 10^{-7} \\
+10^{-4} + 10^{-7} & 10^{-7} & 10^{-4} + 10^{-7} \\
+\end{bmatrix}
+||_\infty\)\\
+\(
+ =
+||
+\begin{bmatrix} 
+-10^{-7} & -10^{-7} & -10^{-7} \\
+-10^{-7} & -10^{-7} & -10^{-7} \\
+-10^{-7} & -10^{-7} & -10^{-7} \\
+\end{bmatrix}
+||_\infty = 3 * 10^{-7}
+\)
+
+Neue Abschätzung wenn beide Seiten gestört sind:
+
+\(\frac{||x - \overset{\sim}{x}||_\infty}{||x||_\infty} \leq \frac{\text{cond}(A)}{1-\text{cond}(A)*\frac{||A-\overset{\sim}{A}||_\infty}{||A||_\infty}} * (\frac{||A-\overset{\sim}{A}||_\infty}{||A||_\infty} + \frac{||b - \overset{\sim}{b}||_\infty}{||b||_\infty})\)
+
+\(0.01 \leq \frac{60'003}{1-60'000*\frac{3 * 10^{-7}}{3}} * (\frac{3 * 10^{-7}}{3} + \frac{\varepsilon}{1})\)
+
+\(\frac{0.01}{\frac{60'003}{1-60'000*\frac{3 * 10^{-7}}{3}}} \leq \frac{3 * 10^{-7}}{3} + \varepsilon\)
+
+\(\frac{0.01}{\frac{60'003}{1-60'000*\frac{3 * 10^{-7}}{3}}} - \frac{3 * 10^{-7}}{3} \leq \varepsilon\)
+
+Die Abweichung bei der z-Komponente in \(\overset{\sim}{b}\) darf höchstens \(\frac{0.01}{\frac{60'003}{1-60'000*\frac{3 * 10^{-7}}{3}}} - \frac{3 * 10^{-7}}{3}\) bzw. \(\approx\) \(6.5658*10^{-8}\) sein, damit die Ungleichung noch stimmt.
+
+\end{document}
