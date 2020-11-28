@@ -14,7 +14,7 @@ b = np.array([
     [34.],
 ])
 
-print('Linalg Solve: \n', np.linalg.solve(A,b))
+#print('Linalg Solve: \n', np.linalg.solve(A,b))
 
 B = np.array([
     [0,-5./8.,-2./8.],
@@ -28,8 +28,8 @@ C = np.array([
     [34./7.],
 ])
 
-print('B = \n', B)
-print('C = \n', C)
+#print('B = \n', B)
+#print('C = \n', C)
 
 x = np.array([
     [1.],
