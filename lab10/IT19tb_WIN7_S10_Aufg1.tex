@@ -1,0 +1,339 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+% to set spacing of page margins
+\usepackage[margin=2cm,nohead]{geometry}
+% to include images
+\usepackage{graphicx}
+% to automatically create paragraphs when doing so in the code
+\usepackage{parskip}
+% additional math stuff
+\usepackage{amsmath}
+% line spacing
+\usepackage{setspace}
+% for checkmarks
+\usepackage{amssymb}
+
+% to not indent new paragraphs
+\setlength{\parindent}{0pt}
+
+%\doublespacing
+\onehalfspacing
+
+\begin{document}
+
+\section*{IT19tb WIN7 S10 Aufgabe 1}
+Leo Rudin \& Stefan Teodoropol
+
+Ax = b mit
+
+\[
+A =
+\begin{bmatrix} 
+8 & 5 & 2 \\
+5 & 9 & 1 \\
+4 & 2 & 7 \\
+\end{bmatrix}
+b =
+\begin{bmatrix} 
+19 \\
+5 \\
+34 \\
+\end{bmatrix}
+\]
+
+Vektornorm: \(||x||_\infty = \text{max}(|x_1|,...,|x_n|)\)\\
+Matrixnorm: \(||x||_\infty = \text{max}(|x_{11}|+...+|x_{1n}|,...,|x_{n1}|+...+|x_{nn}|)\)
+
+\subsection*{a)}
+
+Überprüfung mittels der Zeilen:\\
+\(8 > 5 + 2 \checkmark\)\\
+\(9 > 1 + 5 \checkmark\)\\
+\(7 > 4 + 2 \checkmark\)
+
+Diese Bedingung ist erfüllt, somit sollte das System mittels dem Jacobi-Verfahren konvergieren.
+
+\newpage
+\subsection*{b)}
+
+Gleichung Umstellen nach Komponenten:\\
+\(8x_1 + 5x_2 + 2x_3 = 19 \rightarrow x_1 = \frac{19}{8} - \frac{5}{8}x_2 - \frac{2}{8}x_3\)\\
+\(5x_1 + 9x_2 + 1x_3 = 5 \rightarrow x_2 = \frac{5}{9} - \frac{5}{9}x_1 - \frac{1}{9}x_3\)\\
+\(4x_1 + 2x_2 + 7x_3 = 34 \rightarrow x_3 = \frac{34}{7} - \frac{4}{7}x_1 - \frac{2}{7}x_2\)
+
+\vspace{5mm}
+
+Aufstellung der Fixpunktgleichung:
+
+\(
+\begin{bmatrix} 
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+0 & -\frac{5}{8} & -\frac{2}{8} \\
+-\frac{5}{9} & 0 & -\frac{1}{9} \\
+-\frac{4}{7} & -\frac{2}{7} & 0 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+x_1\\
+x_2\\
+x_3\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+\frac{19}{8}\\
+\frac{5}{9}\\
+\frac{34}{7}\\
+\end{bmatrix}
+\)
+
+\vspace{5mm}
+
+Durchführung der Iteration:
+
+\(
+x^{(0)} = 
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
+\)
+
+\(
+x^{(1)} = 
+\begin{bmatrix} 
+0 & -\frac{5}{8} & -\frac{2}{8} \\
+-\frac{5}{9} & 0 & -\frac{1}{9} \\
+-\frac{4}{7} & -\frac{2}{7} & 0 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+\frac{19}{8}\\
+\frac{5}{9}\\
+\frac{34}{7}\\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+2.25\\
+-\frac{1}{3}\\
+4.57\\
+\end{bmatrix}
+\)
+
+\(
+x^{(2)} = 
+\begin{bmatrix} 
+0 & -\frac{5}{8} & -\frac{2}{8} \\
+-\frac{5}{9} & 0 & -\frac{1}{9} \\
+-\frac{4}{7} & -\frac{2}{7} & 0 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+2.25\\
+-\frac{1}{3}\\
+4.57\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+\frac{19}{8}\\
+\frac{5}{9}\\
+\frac{34}{7}\\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+1.44\\
+-1.2\\
+3.67\\
+\end{bmatrix}
+\)
+
+\(
+x^{(3)} = 
+\begin{bmatrix} 
+0 & -\frac{5}{8} & -\frac{2}{8} \\
+-\frac{5}{9} & 0 & -\frac{1}{9} \\
+-\frac{4}{7} & -\frac{2}{7} & 0 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+1.44\\
+-1.2\\
+3.67\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+\frac{19}{8}\\
+\frac{5}{9}\\
+\frac{34}{7}\\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+2.21\\
+-0.65\\
+4.38\\
+\end{bmatrix}
+\)
+
+\newpage
+\subsection*{c)}
+
+Überprüfung der Kontraktionsbedingung:
+
+\(||B||_\infty < 1\)\\
+\(
+||B||_\infty
+=
+||
+\begin{bmatrix} 
+0 & -\frac{5}{8} & -\frac{2}{8} \\
+-\frac{5}{9} & 0 & -\frac{1}{9} \\
+-\frac{4}{7} & -\frac{2}{7} & 0 \\
+\end{bmatrix}
+||_\infty
+=
+\text{max}\{\frac{7}{8},\frac{6}{9},\frac{6}{7}\}
+=
+\frac{7}{8}
+\)
+
+Da \(\frac{7}{8} < 1\) erfüllt ist, ist die Bedingung erfüllt.
+
+\vspace{5mm}
+
+A-Posteriori Abschätzung:
+
+\(||x^{(n)} - \overset{\_}{x}||_\infty \leq \frac{||B||_\infty}{1 - ||B||_\infty} * ||x^{(n)} - x^{(n-1)}||_\infty\)
+
+\(
+||x^{(n)} - x^{(n-1)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.21\\
+-0.65\\
+4.38\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1.44\\
+-1.2\\
+3.67\\
+\end{bmatrix}
+||_\infty
+=
+\begin{bmatrix} 
+0.77\\
+0.55\\
+0.71\\
+\end{bmatrix}
+=
+\text{max}\{0.77,0.55,0.71\}
+=
+0.77
+\)
+
+\(\frac{\frac{7}{8}}{1 - \frac{7}{8}} * 0.77 = 5.39\)
+
+Der maximale absolute Fehler beträgt 5.39.
+
+\subsection*{d)}
+
+A-Priori Abschätzung:
+
+\(||x^{(n)} - \overset{\_}{x}||_\infty \leq \frac{||B||_\infty^n}{1 - ||B||_\infty} * ||x^{(1)} - x^{(0)}||_\infty\)
+
+\(
+||x^{(1)} - x^{(0)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.25\\
+-\frac{1}{3}\\
+4.57\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
+||_\infty
+=
+||
+\begin{bmatrix} 
+1.25\\
+\frac{2}{3}\\
+1.57\\
+\end{bmatrix}
+||_\infty
+=
+\text{max}\{1.25,\frac{2}{3},1.57\} = 1.57
+\)
+
+\(10^{-4} \leq \frac{(\frac{7}{8})^n}{1 - \frac{7}{8}} * 1.57\)
+
+\(\frac{10^{-4}}{8} \leq (\frac{7}{8})^n * 1.57\)
+
+\(\frac{\frac{10^{-4}}{8}}{1.57} \leq (\frac{7}{8})^n\)
+
+\(log_{\frac{7}{8}}\left(\frac{\frac{10^{-4}}{8}}{1.57}\right) \leq n\)
+
+\(87.92 \leq n\)
+
+Es braucht mindestens 88 Iterationen.
+
+\newpage
+\subsection*{e)}
+
+\(
+||x^{(3)} - x^{(2)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.21\\
+-0.65\\
+4.38\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1.44\\
+-1.2\\
+3.67\\
+\end{bmatrix}
+||_\infty
+=
+||
+\begin{bmatrix} 
+0.77\\
+0.55\\
+0.71\\
+\end{bmatrix}
+||_\infty
+=
+\text{max}\{0.77,0.55,0.71\} = 0.77
+\)
+
+\(10^{-4} \leq \frac{(\frac{7}{8})^n}{1 - \frac{7}{8}} * 0.77\)
+
+\(\frac{\frac{10^{-4}}{8}}{0.77} \leq (\frac{7}{8})^n\)
+
+\(log_{\frac{7}{8}}\left(\frac{\frac{10^{-4}}{8}}{0.77}\right) \leq n\)
+
+\(82.59 \leq n\)
+
+Es braucht mindestens 83 Iterationen.
+
+\end{document}

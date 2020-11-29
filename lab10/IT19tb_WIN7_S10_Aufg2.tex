@@ -1,0 +1,346 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+
+% to set spacing of page margins
+\usepackage[margin=2cm,nohead]{geometry}
+% to include images
+\usepackage{graphicx}
+% to automatically create paragraphs when doing so in the code
+\usepackage{parskip}
+% additional math stuff
+\usepackage{amsmath}
+% line spacing
+\usepackage{setspace}
+% for checkmarks
+\usepackage{amssymb}
+
+% to not indent new paragraphs
+\setlength{\parindent}{0pt}
+
+%\doublespacing
+\onehalfspacing
+
+\begin{document}
+
+\section*{IT19tb WIN7 S10 Aufgabe 2}
+Leo Rudin \& Stefan Teodoropol
+
+Ax = b mit
+
+\[
+A =
+\begin{bmatrix} 
+8 & 5 & 2 \\
+5 & 9 & 1 \\
+4 & 2 & 7 \\
+\end{bmatrix}
+b =
+\begin{bmatrix} 
+19 \\
+5 \\
+34 \\
+\end{bmatrix}
+\]
+
+Vektornorm: \(||x||_\infty = \text{max}(|x_1|,...,|x_n|)\)\\
+Matrixnorm: \(||x||_\infty = \text{max}(|x_{11}|+...+|x_{1n}|,...,|x_{n1}|+...+|x_{nn}|)\)
+
+\subsection*{b)}
+
+\(
+L = 
+\begin{bmatrix} 
+0 & 0 & 0 \\
+5 & 0 & 0 \\
+4 & 2 & 0 \\
+\end{bmatrix}
+D =
+\begin{bmatrix} 
+8 & 0 & 0 \\
+0 & 9 & 0 \\
+0 & 0 & 7 \\
+\end{bmatrix}
+R =
+\begin{bmatrix} 
+0 & 5 & 2 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+\end{bmatrix}
+\)
+
+\(
+(L+R)^{-1} =
+\begin{bmatrix} 
+0.125 & 0 & 0 \\
+-0.069 & 0.111 & 0 \\
+-0.052 & -0.032 & 0.143 \\
+\end{bmatrix}
+\)
+
+\(
+-(L+R)^{-1} * R = 
+\begin{bmatrix} 
+0 & -0.625 & -0.25 \\
+0 & 0.347 & 0.028 \\
+0 & 0.258 & 0.135 \\
+\end{bmatrix}
+=
+B
+\)
+
+\(
+(L+R)^{-1} * b = 
+\begin{bmatrix} 
+2.375 \\
+-0.764 \\
+3.718 \\
+\end{bmatrix}
+=
+c
+\)
+
+Iterationsschritte:
+
+\(
+x^{(0)} = 
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
+\)
+
+\(
+x^{(1)} = 
+\begin{bmatrix} 
+0 & -0.625 & -0.25 \\
+0 & 0.347 & 0.028 \\
+0 & 0.258 & 0.135 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+2.375 \\
+-0.764 \\
+3.718 \\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+2.25\\
+-1.028\\
+3.865\\
+\end{bmatrix}
+\)
+
+\(
+x^{(2)} = 
+\begin{bmatrix} 
+0 & -0.625 & -0.25 \\
+0 & 0.347 & 0.028 \\
+0 & 0.258 & 0.135 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+2.25\\
+-1.028\\
+3.865\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+2.375 \\
+-0.764 \\
+3.718 \\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+2.051\\
+-1.0134\\
+3.975\\
+\end{bmatrix}
+\)
+
+\(
+x^{(3)} = 
+\begin{bmatrix} 
+0 & -0.625 & -0.25 \\
+0 & 0.347 & 0.028 \\
+0 & 0.258 & 0.135 \\
+\end{bmatrix}
+*
+\begin{bmatrix} 
+2.051\\
+-1.0134\\
+3.975\\
+\end{bmatrix}
++
+\begin{bmatrix} 
+2.375 \\
+-0.764 \\
+3.718 \\
+\end{bmatrix}
+=
+\begin{bmatrix} 
+2.015\\
+-1.005\\
+3.993\\
+\end{bmatrix}
+\)
+
+\newpage
+\subsection*{c)}
+
+Überprüfung der Kontraktionsbedingung:
+
+\(||B||_\infty < 1\)\\
+\(
+||B||_\infty 
+=
+||
+\begin{bmatrix} 
+0 & -0.625 & -0.25 \\
+0 & 0.347 & 0.028 \\
+0 & 0.258 & 0.135 \\
+\end{bmatrix}
+||_\infty
+=
+\text{max}\{0.875,0.375,0.393\}
+=
+0.875
+\)
+
+Da \(0.875 < 1\) erfüllt ist, ist die Bedingung erfüllt.
+
+\vspace{5mm}
+
+A-Posteriori Abschätzung:
+
+\(||x^{(n)} - \overset{\_}{x}||_\infty \leq \frac{||B||_\infty}{1 - ||B||} * ||x^{(n)} - x^{(n-1)}||_\infty\)
+
+\(
+||x^{(n)} - x^{(n-1)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.015\\
+-1.005\\
+3.993\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+2.051\\
+-1.0134\\
+3.975\\
+\end{bmatrix}
+||_\infty
+=
+\begin{bmatrix} 
+0.036\\
+0.0084\\
+0.018\\
+\end{bmatrix}
+=
+\text{max}\{0.036,0.0084,0.018\}
+=
+0.036
+\)
+
+\(\frac{0.875}{1 - 0.875} * 0.036 = 0.252\)
+
+Der maximale absolute Fehler beträgt 0.252.
+
+\subsection*{d)}
+
+A-Priori Abschätzung:
+
+\(||x^{(n)} - \overset{\_}{x}||_\infty \leq \frac{||B||_\infty^n}{1 - ||B||_\infty} * ||x^{(1)} - x^{(0)}||_\infty\)
+
+\(
+||x^{(1)} - x^{(0)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.25\\
+-1.028\\
+3.865\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+1\\
+-1\\
+3\\
+\end{bmatrix}
+||_\infty
+=
+||
+\begin{bmatrix} 
+1.25\\
+-0.028\\
+0.865\\
+\end{bmatrix}
+||_\infty
+=
+\text{max}\{1.25,0.025,0.865\} = 1.25
+\)
+
+\(10^{-4} \leq \frac{(0.875)^n}{1 - 0.875} * 1.25\)
+
+\(10^{-4}*0.125 \leq (0.875)^n * 1.25\)
+
+\(\frac{10^{-4}*0.125}{1.25} \leq (0.875)^n\)
+
+\(log_{0.875}\left(\frac{10^{-4}*0.125}{1.25}\right) \leq n\)
+
+\(86.2189 \leq n\)
+
+Es braucht mindestens 87 Iterationen.
+
+\newpage
+\subsection*{e)}
+
+\(
+||x^{(3)} - x^{(2)}||_\infty
+=
+||
+\begin{bmatrix} 
+2.015\\
+-1.005\\
+3.993\\
+\end{bmatrix}
+-
+\begin{bmatrix} 
+2.051\\
+-1.0134\\
+3.975\\
+\end{bmatrix}
+||_\infty
+=
+\begin{bmatrix} 
+0.036\\
+0.0084\\
+0.018\\
+\end{bmatrix}
+=
+\text{max}\{0.036,0.0084,0.018\}
+=
+0.036
+\)
+
+\(10^{-4} \leq \frac{(0.875)^n}{1 - 0.875} * 0.036\)
+
+\(10^{-4}*0.125 \leq (0.875)^n * 0.036\)
+
+\(\frac{10^{-4}*0.125}{0.036} \leq (0.875)^n\)
+
+\(log_{0.875}\left(\frac{10^{-4}*0.125}{0.036}\right) \leq n\)
+
+\(59.6530 \leq n\)
+
+Es braucht mindestens 60 Iterationen.
+
+\end{document}
