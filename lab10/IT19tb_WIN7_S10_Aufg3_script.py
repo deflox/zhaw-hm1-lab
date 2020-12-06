@@ -34,7 +34,7 @@ print('x: \n', x)
 
 # Aufgabe 3b
 
-dim  = 300
+dim  = 3000
 A    = np.diag(np.diag(np.ones((dim,dim))*4000))+np.ones((dim,dim))
 dum1 = np.arange(1,np.int(dim/2+1),dtype=np.float64).reshape((np.int(dim/2),1))
 dum2 = np.arange(np.int(dim/2),0,-1,dtype=np.float64).reshape((np.int(dim/2),1))
@@ -56,7 +56,7 @@ stop = time.time()
 t2 = stop-start
 
 start = time.time()
-A_triangle,A_det,x3 = IT19tb_WIN7_S6_Aufg(A,b)
+x3 = np.linalg.solve(A,b)
 stop = time.time()
 
 t3 = stop-start
@@ -65,8 +65,8 @@ print('Zeit Jacobi-Verfahren:', t1)
 print('Zeit Gauss-Seidel-Verfahren:', t2)
 print('Zeit Gauss-Verfahren Serie 6:', t3)
 
-x1_fehler = np.abs(np.subtract(x3.reshape(dim,1),x1))
-x2_fehler = np.abs(np.subtract(x3.reshape(dim,1),x2))
+x1_fehler = np.subtract(x3.reshape(dim,1),x1)
+x2_fehler = np.subtract(x3.reshape(dim,1),x2)
 
 plt.plot(x1_fehler,color='blue',label='Fehler Jacobi-Verfahren')
 plt.plot(x2_fehler,color='red',label='Fehler Gauss-Seidel-Verfahren')
