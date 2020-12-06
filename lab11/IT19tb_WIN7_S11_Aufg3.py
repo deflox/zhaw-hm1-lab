@@ -6,7 +6,7 @@ detail = 1000
 #maximum n for iterations
 maxit  = 70
 #minimim value of x-interval
-x_min  = -2.
+x_min  = -2
 #maximum value of x-interval
 x_max  = 0.7
 #minimim vale of y-interval
